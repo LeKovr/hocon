@@ -1,0 +1,22 @@
+# ##############################################################################
+#  openApi config example
+#  github.com/grpc-ecosystem/grpc-gateway/v2@v2.11.2/examples/internal/proto/examplepb/unannotated_echo_service.swagger.yaml
+#  openApi specification: https://swagger.io/specification/
+# #############################################################################
+openapiOptions:
+  file:
+    # the file name must be the same as one passed to protoc when generating generating .swagger.json
+    - file: "proto/service.proto"
+      option:
+        info:
+          title: HoCon Service api
+          contact:
+            name: LeKovr
+            url: https://lekovr.github.io
+          license:
+            name: Apache License 2.0
+            url: https://github.com/LeKovr/hocon/blob/main/LICENSE
+          version: "1.0"
+        externalDocs:
+          description: More about hocon
+          url: https://github.com/LeKovr/hocon

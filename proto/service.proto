@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package api.hocon.v1;
+
+option java_package = "com.hocon.v1";
+option java_multiple_files = true;
+option java_outer_classname = "hoconProto";
+
+option go_package = "github.com/LeKovr/hocon/proto;hocon";
+
+import "google/api/annotations.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/timestamp.proto";
+import "protoc-gen-openapiv2/options/annotations.proto";
+
+// Home Control service
+service HoconService {
+  // управление лампочкой
+  rpc LampControl(LampStatus) returns (LampStatus) {
+    option (google.api.http) = {
+      get: "/api/lamp"
+    };
+  }
+}
+
+// Lamp scenes
+enum LampScene {
+	// A Standard tournament
+	UNKNOWN = 0;
+	// Item is off
+	OFF = 1;
+	// Item is in night mode
+	NIGHT = 2;
+	// Item is in day mode
+	DAY = 3;
+}
+  
+// Lamp status attributes
+message LampStatus {
+	string id = 1;
+	LampScene scene = 2;
+}
+
+// TODO:
+//message LampArea {
+//	repeated LampStatus scenes = 1;
+//}

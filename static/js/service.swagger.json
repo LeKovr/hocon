@@ -1,0 +1,130 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "HoCon Service api",
+    "version": "1.0",
+    "contact": {
+      "name": "Docker pg-gen project",
+      "url": "https://github.com/apisite/pdocker-pb-gen"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://github.com/apisite/pdocker-pb-gen/blob/main/License.md"
+    }
+  },
+  "tags": [
+    {
+      "name": "HoconService"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/lamp": {
+      "get": {
+        "summary": "управление лампочкой",
+        "operationId": "HoconService_LampControl",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1LampStatus"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "scene",
+            "description": " - UNKNOWN: A Standard tournament\n - OFF: Item is off\n - NIGHT: Item is in night mode\n - DAY: Item is in day mode",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "enum": [
+              "UNKNOWN",
+              "OFF",
+              "NIGHT",
+              "DAY"
+            ],
+            "default": "UNKNOWN"
+          }
+        ],
+        "tags": [
+          "HoconService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1LampScene": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "OFF",
+        "NIGHT",
+        "DAY"
+      ],
+      "default": "UNKNOWN",
+      "description": "- UNKNOWN: A Standard tournament\n - OFF: Item is off\n - NIGHT: Item is in night mode\n - DAY: Item is in day mode",
+      "title": "Lamp scenes"
+    },
+    "v1LampStatus": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "scene": {
+          "$ref": "#/definitions/v1LampScene"
+        }
+      },
+      "title": "Lamp status attributes"
+    }
+  },
+  "externalDocs": {
+    "description": "More about apisite",
+    "url": "https://apisite.github.io"
+  }
+}
