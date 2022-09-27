@@ -10,6 +10,9 @@ import (
 	gen "SELF/zgen/go/proto"
 )
 
+type Config struct {
+}
+
 const (
 	port   = ":38899"
 	CmdSet = "setPilot"
@@ -47,6 +50,10 @@ type ResultEnvelope struct {
 
 type HoconServiceImpl struct {
 	gen.UnimplementedHoconServiceServer
+}
+
+func New(cfg Config) *HoconServiceImpl {
+	return &HoconServiceImpl{}
 }
 
 func (srv HoconServiceImpl) LampControl(ctx context.Context, cmd *gen.LampStatus) (rv *gen.LampStatus, err error) {

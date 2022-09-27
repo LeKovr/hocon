@@ -27,4 +27,4 @@ static/js/api.js: zgen/ts/proto/service.pb.ts
 #	--minify --sourcemap --target=chrome58,firefox57,safari11,edge16 \
 
 run:
-	go run cmd/hocon/main.go
+	go run cmd/hocon/*.go
