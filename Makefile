@@ -2,7 +2,7 @@
 GOGENS_IMG ?= ghcr.io/apisite/gogens:latest
 
 buf.lock:
-	@id=$$(docker create $(BUF_IMG)) ; \
+	@id=$$(docker create $(GOGENS_IMG)) ; \
 	docker cp $$id:/app/$@ $@ ; \
 	docker rm -v $$id
 
