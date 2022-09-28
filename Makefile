@@ -1,27 +1,22 @@
 
-BUF_IMG ?= buf
-
-buf-gen:
-	docker run --rm  -v `pwd`:/mnt/pwd -w /mnt/pwd $(BUF_IMG) --debug generate --template buf.gen.yaml --path proto
-
-buf:
-	docker run --rm -it  -v `pwd`:/mnt/pwd -w /mnt/pwd $(BUF_IMG) $(CMD)
+GOGENS_IMG ?= ghcr.io/apisite/gogens:latest
 
 buf.lock:
 	@id=$$(docker create $(BUF_IMG)) ; \
 	docker cp $$id:/app/$@ $@ ; \
 	docker rm -v $$id
 
+gen:
+	docker run --rm  -v `pwd`:/mnt/pwd -w /mnt/pwd $(GOGENS_IMG) --debug generate --template buf.gen.yaml --path proto
 
-swagger-ui:
-	 docker-compose -f docker-compose.yaml up
+buf:
+	docker run --rm -it  -v `pwd`:/mnt/pwd -w /mnt/pwd $(GOGENS_IMG) $(CMD)
 
 js: static/js/api.js
 
 static/js/api.js: zgen/ts/proto/service.pb.ts
-	p=$$PWD ; \
-	cd zgen/ts/proto ; $$p/esbuild service.pb.ts --bundle \
-	--outfile=$$p/static/js/api.js --global-name=AppAPI
+	docker run --rm  -v `pwd`:/mnt/pwd -w /mnt/pwd --entrypoint /go/bin/esbuild $(GOGENS_IMG)  \
+	zgen/ts/proto/service.pb.ts --bundle --outfile=/mnt/pwd/static/js/api.js --global-name=AppAPI
 
 #	--sourcemap --target=chrome58 \
 #	--minify --sourcemap --target=chrome58,firefox57,safari11,edge16 \

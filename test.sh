@@ -5,6 +5,7 @@
 #     bash test.sh [DAY|NIGHT|OFF]
 #
 
+HOST=hocon.dev.lan:8080
 
 ACCEPT="Accept: application/json"
 CT=""
@@ -12,7 +13,7 @@ CT=""
 
 AUTH="Authorization: ffdsse#3"
 
-[[ "$API_HOST" ]] || API_HOST=http://hocon.dev.lan:8081
+[[ "$API_HOST" ]] || API_HOST=http://$HOST
 
 do_cmd() {
 local scene=$1

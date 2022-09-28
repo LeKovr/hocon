@@ -17,14 +17,14 @@ var AppAPI = (() => {
   };
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // service.pb.ts
+  // zgen/ts/proto/service.pb.ts
   var service_pb_exports = {};
   __export(service_pb_exports, {
     HoconService: () => HoconService,
     LampScene: () => LampScene
   });
 
-  // ../fetch.pb.ts
+  // zgen/ts/fetch.pb.ts
   var b64 = new Array(64);
   var s64 = new Array(123);
   for (let i = 0; i < 64; )
@@ -88,7 +88,7 @@ var AppAPI = (() => {
     return new URLSearchParams(urlSearchParams).toString();
   }
 
-  // service.pb.ts
+  // zgen/ts/proto/service.pb.ts
   var LampScene = /* @__PURE__ */ ((LampScene2) => {
     LampScene2["UNKNOWN"] = "UNKNOWN";
     LampScene2["OFF"] = "OFF";

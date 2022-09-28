@@ -4,12 +4,12 @@
     "title": "HoCon Service api",
     "version": "1.0",
     "contact": {
-      "name": "Docker pg-gen project",
-      "url": "https://github.com/apisite/pdocker-pb-gen"
+      "name": "LeKovr",
+      "url": "https://lekovr.github.io"
     },
     "license": {
-      "name": "MIT License",
-      "url": "https://github.com/apisite/pdocker-pb-gen/blob/main/License.md"
+      "name": "Apache License 2.0",
+      "url": "https://github.com/LeKovr/hocon/blob/main/LICENSE"
     }
   },
   "tags": [
@@ -124,7 +124,7 @@
     }
   },
   "externalDocs": {
-    "description": "More about apisite",
-    "url": "https://apisite.github.io"
+    "description": "More about hocon",
+    "url": "https://github.com/LeKovr/hocon"
   }
 }

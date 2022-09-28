@@ -49,7 +49,7 @@ plugins:
   # #############################################################################
   - name: doc
     out: proto/
-    opt: template.tmpl,README.md
+    opt: /app/template.tmpl,README.md
     strategy: all
   # ##############################################################################
   #  protoc-gen-grpc-gateway-ts

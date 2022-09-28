@@ -85,11 +85,11 @@ func Run(version string, exitFunc func(code int)) {
 
 	// creating a listener for server
 	var l net.Listener
-	l, err = net.Listen("tcp", listenAddr)
+	listener, err = net.Listen("tcp", listenAddr)
 	if err != nil {
 		return
 	}
-	m := cmux.New(l)
+	m := cmux.New(listener)
 
 	// a different listener for HTTP1
 	httpL := m.Match(cmux.HTTP1Fast())
@@ -108,13 +108,15 @@ func Run(version string, exitFunc func(code int)) {
 	m.Serve()
 }
 
+// withLogger prints HTTP request log
 func withLogger(handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(writer http.ResponseWriter, request *http.Request) {
 		m := httpsnoop.CaptureMetrics(handler, writer, request)
-		log.Printf("http[%d]-- %s -- %s\n", m.Code, m.Duration, request.URL.Path)
+		log.Printf("http[%d]-- %s -- %s\n", m.Code, m.Duration, request.RequestURI)
 	})
 }
 
+// withGW routes /api requests to grpc gateway
 func withGW(gwmux *runtime.ServeMux, handler http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if strings.HasPrefix(r.URL.Path, "/api") {
