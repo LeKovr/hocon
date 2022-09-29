@@ -8,6 +8,7 @@ replace SELF => ./
 
 require (
 	SELF v0.0.0-00010101000000-000000000000
+	github.com/apisite/libgo/config v0.0.0-20220929185311-47dd54236845
 	github.com/felixge/httpsnoop v1.0.3
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.3
 	github.com/soheilhy/cmux v0.1.5

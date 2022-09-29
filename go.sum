@@ -1,3 +1,5 @@
+github.com/apisite/libgo/config v0.0.0-20220929185311-47dd54236845 h1:Q5AIYPxwiCfeJt+Gw8FDdA4nF6tl0FUm36rjGY02BG8=
+github.com/apisite/libgo/config v0.0.0-20220929185311-47dd54236845/go.mod h1:myWgPJtognO2xLHp3P508o2h2eP2O4g7nt+zvmUh/nE=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/felixge/httpsnoop v1.0.3 h1:s/nj+GCswXYzN5v2DpNMuMQYe+0DDwt5WVCU6CWBdXk=
 github.com/felixge/httpsnoop v1.0.3/go.mod h1:m8KPJKqk1gH5J9DgRY2ASl2lWCfGKXixSwevea8zH2U=
