@@ -4,11 +4,10 @@ go 1.19
 
 replace SELF => ./
 
-replace github.com/apisite/go-kit/config => ../go-kit/config
+// replace github.com/apisite/libgo/config => ../libgo/config
 
 require (
 	SELF v0.0.0-00010101000000-000000000000
-	github.com/apisite/go-kit/config v0.0.0-00010101000000-000000000000
 	github.com/felixge/httpsnoop v1.0.3
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.3
 	github.com/soheilhy/cmux v0.1.5

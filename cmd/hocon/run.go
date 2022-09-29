@@ -20,7 +20,7 @@ import (
 	"SELF/service"
 	"SELF/static"
 
-	"github.com/apisite/go-kit/config"
+	"github.com/apisite/libgo/config"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
