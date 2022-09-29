@@ -1,0 +1,4 @@
+.env*
+hocon
+!cmd/hocon
+coverage.*
