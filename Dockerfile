@@ -8,7 +8,7 @@ FROM ${go_img}:${go_ver}
 
 #RUN apk add --no-cache git curl
 
-WORKDIR /app
+WORKDIR /app/hocon
 COPY . .
 
 RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.version=`git describe --tags --always`" -a ./cmd/hocon
@@ -16,7 +16,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags "-X main.version=`git describe --
 FROM scratch
 
 WORKDIR /
-COPY --from=0 /app/hocon .
+COPY --from=0 /app/hocon/hocon .
 # Need for SSL
 COPY --from=0 /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 
