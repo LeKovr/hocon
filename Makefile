@@ -95,6 +95,11 @@ $(PRG): $(SOURCES)
 run: $(PRG)
 	./$(PRG) --token $(APP_TOKEN)
 
+build: $(PRG)
+
+version: $(PRG)
+	go version -m $(PRG)
+
 ## Format go sources
 fmt:
 	$(GO) fmt ./...
