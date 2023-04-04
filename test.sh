@@ -11,7 +11,8 @@ ACCEPT="Accept: application/json"
 CT=""
 #"Content-Type: application/json"
 
-AUTH="Authorization: ffdsse#3"
+. .env
+AUTH="Authorization: $TEST_TOKEN"
 
 [[ "$API_HOST" ]] || API_HOST=http://$HOST
 
@@ -19,7 +20,7 @@ do_cmd() {
 local scene=$1
 action="/api/lamp"
 [[ "$scene" ]] && scene="&scene=$scene"
-curl  -gs -H "$ACCEPT" "${API_HOST}$action?id=lamp1$scene"
+curl  -gs -H "$ACCEPT" -H "$AUTH" "${API_HOST}$action?id=lamp1$scene"
 #&scene=$scene"
 
 #rv=$(curl -gs -H "$ACCEPT" ${API_HOST}$action?id=lamp1&scene=$scene)
