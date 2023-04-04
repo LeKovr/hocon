@@ -15,12 +15,12 @@ import (
 	"github.com/soheilhy/cmux"
 
 	// importing generated stubs
-	gen "SELF/zgen/go/proto"
+	gen "github.com/LeKovr/hocon/zgen/go/proto"
 	// importing implementation
-	"SELF/service"
-	"SELF/static"
+	service "github.com/LeKovr/hocon"
+	"github.com/LeKovr/hocon/static"
 
-	"github.com/apisite/libgo/config"
+	"github.com/LeKovr/go-kit/config"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
