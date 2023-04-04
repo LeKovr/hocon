@@ -37,7 +37,7 @@ PROJECT_NAME  ?= $(PRG)
 # dcape network connect to, must be set in .env
 DCAPE_NET     ?= dcape_default
 
-GOGENS_IMG    ?= ghcr.io/apisite/gogens:latest
+GOGENS_IMG    ?= ghcr.io/lekovr/gogens:latest
 
 # ------------------------------------------------------------------------------
 # .env template (custom part)
