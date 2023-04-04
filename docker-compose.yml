@@ -19,7 +19,7 @@ services:
 #    command:
 #      --debug
     environment:
-      - TOKEN
+      - TOKEN=${APP_TOKEN}
     build:
       context: .
 
