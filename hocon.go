@@ -14,9 +14,9 @@ type Config struct {
 }
 
 const (
-	port   = ":38899"
-	CmdSet = "setPilot"
-	CmdGet = "getPilot"
+	port       = ":38899"
+	CmdSet     = "setPilot"
+	CmdGet     = "getPilot"
 	OffSceneID = 0
 )
 
@@ -110,6 +110,7 @@ func run(lamp string, key gen.LampScene) (*gen.LampScene, error) {
 	//	} else {
 	if !res.Result.Params.State {
 		res.Result.Params.SceneKey = "off"
+		key = gen.LampScene_OFF
 	} else {
 		for k, v := range scene {
 			if res.Result.Params.SceneID == v {
@@ -151,4 +152,5 @@ func send(host string, cmd []byte) (rv []byte, err error) {
 	}
 	// return string(buffer[0:n]), nil
 	return buffer[0:n], nil
+
 }
