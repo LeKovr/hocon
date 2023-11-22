@@ -168,5 +168,5 @@ DCAPE_MAKEFILE  ?= $(shell docker inspect -f "{{.Config.Labels.dcape_app_makefil
 ifeq ($(shell test -e $(DCAPE_MAKEFILE) && echo -n yes),yes)
   include $(DCAPE_MAKEFILE)
 else
-  include /opt/dcape-app/Makefile
+  -include /opt/dcape-app/Makefile
 endif
