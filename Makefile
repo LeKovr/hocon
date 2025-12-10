@@ -134,12 +134,6 @@ cov-html: cov
 cov-clean:
 	rm -f coverage.*
 
-## Changes from last tag
-changelog:
-	@echo Changes since $(RELEASE)
-	@echo
-	@git log $(RELEASE)..@ --pretty=format:"* %s"
-
 # ------------------------------------------------------------------------------
 ## Docker operations
 #:
@@ -154,19 +148,13 @@ docker: $(PRG)
 docker-build: CMD="build --no-cache --force-rm $(DC_SERVICE)"
 docker-build: dc
 
-## Remove docker image & temp files
-docker-clean:
-	[ "$$($(DOCKER_BIN) images -q $(DC_IMAGE) 2> /dev/null)" = "" ] || $(DOCKER_BIN) rmi $(DC_IMAGE)
-
 clean: ## Remove previous builds
 	@rm -f $(PRG)
 
-# ------------------------------------------------------------------------------
 # Find and include DCAPE/apps/drone/dcape-app/Makefile
-DCAPE_COMPOSE   ?= dcape-compose
-DCAPE_MAKEFILE  ?= $(shell docker inspect -f "{{.Config.Labels.dcape_app_makefile}}" $(DCAPE_COMPOSE))
-ifeq ($(shell test -e $(DCAPE_MAKEFILE) && echo -n yes),yes)
-  include $(DCAPE_MAKEFILE)
-else
-  -include /opt/dcape-app/Makefile
+DCAPE_COMPOSE := dcape-compose
+DCAPE_ROOT    := $(shell docker inspect -f "{{.Config.Labels.dcape_root}}" $(DCAPE_COMPOSE))
+
+ifeq ($(shell test -e $(DCAPE_ROOT)/Makefile.app && echo -n yes),yes)
+  include $(DCAPE_ROOT)/Makefile.app
 endif
